@@ -1,0 +1,46 @@
+:root {
+    --main: #f1c12e;
+    --gree: #27ae60;
+    --red: #e74c3c;
+}
+.icon-add , .btn ,.btn-del{
+    scale: 1.2;
+    transition: all 0.2s ease;
+}
+
+.icon-add:hover , .btn:hover{
+    scale: 1;
+}
+.item:hover,.edit-btn:hover,.btn-del:hover
+{
+    scale: .8;
+    transition: all .2s ease;
+}
+.icon-edit:hover {
+    background-color:#fff ;
+    color: var(--gree);
+    width: 100%;
+    transition: all .2s ease-in-out;
+}
+.icon-save:hover {
+    background-color:#fff ;
+    color: #00bfff;
+}
+.icon-del:hover ,.btn:hover {
+    background-color:#fff !important;
+    color: var(--red) !important;
+    transition: all .2s ease-in-out;
+}
+
+
+.edit-btn{
+    background-color: var(--gree);
+    color: white;
+}
+
+.text{
+    min-height: 14rem;
+}
+ion-icon{
+    visibility: visible !important;
+}
