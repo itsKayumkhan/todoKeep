@@ -1,20 +1,17 @@
 // import React from 'react'
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-const Todo = ({ todo, id, key, deleteTodo, editTodo, inputBox, sendData }) => {
+const Todo = ({ todo, id, deleteTodo, editTodo,date }) => {
   // console.log(ids);
-  const [todoBox, setTodoBox] = useState({
-    title: "",
-    content: "",
-  });
-
+  const [todoBox, setTodoBox] = useState(todo);
   const [save, setSave] = useState(true);
+  let currentDate = new Date().toLocaleString();
 
   const updateTodo = (e) => {
     const { name, value } = e.target;
     setTodoBox((pre) => {
-      return { ...pre, [name]: value };
+      return { ...pre, [name]: value,created: currentDate};
     });
     // console.log(todoBox);
   };
@@ -23,9 +20,11 @@ const Todo = ({ todo, id, key, deleteTodo, editTodo, inputBox, sendData }) => {
     setSave(!save);
   };
 
+  
+
   return (
     <>
-      <div className="flex justify-center  " id={id} key={key}>
+      <div className="flex justify-center  " id={id} key={id}>
         <div className="container m-2 flex flex-col bg-white shadow-md p-2 rounded ">
           {save ? (
             <>
@@ -55,7 +54,9 @@ const Todo = ({ todo, id, key, deleteTodo, editTodo, inputBox, sendData }) => {
                   </div>
                 </div>
               </div>
-              <div className="text  border-t-slate-800 ">{todoBox.content}</div>
+              <div className="text  border-t-slate-800 relative">{todoBox.content}
+              <div className="absolute bottom-0 right-0 text-gray-500 me-2">{todoBox.created}</div>
+              </div>
             </>
           ) : (
             <>
@@ -100,6 +101,7 @@ const Todo = ({ todo, id, key, deleteTodo, editTodo, inputBox, sendData }) => {
                 onChange={(e) => updateTodo(e)
                 }
               />
+
             </>
           )}
         </div>
